@@ -23,7 +23,10 @@
 | Party trays | 12 trays, priced by size | chaoxo.com; listed in the catering line, not the menu |
 
 chaoxo.com's hours, phone and address blocks are Square template filler ((555) 555-5555, San Francisco), so they were **not** used. The menu comes from Square's store data, which Kevin approved reading for this demo.
-| Ordering | Own Square online ordering at chaoxo.com (pickup + delivery); also DoorDash | chaoxo.com; web search |
+| Ordering | Own Square online ordering at chaoxo.com (pickup + delivery); also DoorDash | chaoxo.com (Square store settings); web search |
+| Amenities | Vegetarian options, Kids' menu, Wi-Fi | Google listing (screenshot from Kevin) |
+| Payment methods (online) | Visa, Mastercard, Amex, Discover, JCB, Apple Pay, Google Pay, Cash App Pay | chaoxo.com Square store settings |
+| Newsletter | "Join the Chào XO family" signup | chaoxo.com (footer links there; we don't collect emails) |
 
 ## Brand
 - Accent color: `#C4441C` (from the orange "CHÀO" logo on their cups, darkened to 5.0:1 with white text)
@@ -37,7 +40,9 @@ chaoxo.com's hours, phone and address blocks are Square template filler ((555) 5
 | Delivery apps ("Also on") | yes, DoorDash only | public DoorDash listing |
 | Instagram grid | no | handle unknown |
 | Our Story | yes, their own About text | chaoxo.com |
-| Catering tag + line | yes | chaoxo.com |
+| Catering section + 12 party trays | yes | chaoxo.com |
+| Top info bar, features strip, Ways to order, gallery | yes | facts above |
+| Social icons | placeholders | handles unknown (Kevin 2026-09-29: use placeholders) |
 | Family owned tag | no | not confirmed |
 | First-time offer | no | not confirmed |
 
@@ -83,6 +88,7 @@ The data file is `.js`, not `.json`, so the site still works when opened straigh
 - [ ] Lomo Saltado and Mango Fruit Drinks: ask the owner for real names/prices
 - [ ] Owner confirms menu prices are current (pulled 2026-09-29)
 - [ ] Owner's photo for Our Story (text now comes from their About us)
-- [ ] Instagram handle (turns on the Instagram grid)
+- [ ] Instagram, Facebook, TikTok handles (fill `footer.social` in `data/site.js`)
+- [ ] Accessibility and privacy pages, if the client wants them linked in the footer
 - [ ] Remove `noindex` in `index.html` and set `demo: false` in `data/site.js`
 - [ ] Fill `analytics` in `data/site.js` (siteKey, hubUrl, cfToken)
