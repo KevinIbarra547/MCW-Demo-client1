@@ -19,10 +19,10 @@
 | Catering | Offers catering, food trays, custom event menus | chaoxo.com |
 | Price range | $10–20 per person | Google listing |
 | Google rating | 4.6 from 412 reviews | Google listing screenshot, 2026-09-29 |
-| Menu items named on site | Birria Pho, Birria Dumplings, Lomo Saltado, Short Rib Pho, Kare Curry, Tomyum Pasta, Pandan Horchata, house-made ube coffee | Web search (DoorDash/Mindtrip summaries), Google reviews |
-| Menu prices | **Not shown yet** — see note below | |
+| Menu (65 items, prices, descriptions) | Phở, Rice, Noodles, Appetizers, Drinks, Desserts | chaoxo.com online ordering (Square store data), pulled 2026-09-29 with Kevin's OK. Typos fixed (cotiija, unsweetend, "then bitterness"); descriptions over 140 characters trimmed to their first sentence |
+| Party trays | 12 trays, priced by size | chaoxo.com; listed in the catering line, not the menu |
 
-chaoxo.com's hours, phone and address blocks are Square template filler ((555) 555-5555, San Francisco), so they were **not** used. The menu there loads from Square's store data; pulling that was blocked by the session's permission check, so prices still need a menu photo/screenshot or Kevin's OK.
+chaoxo.com's hours, phone and address blocks are Square template filler ((555) 555-5555, San Francisco), so they were **not** used. The menu comes from Square's store data, which Kevin approved reading for this demo.
 | Ordering | Own Square online ordering at chaoxo.com (pickup + delivery); also DoorDash | chaoxo.com; web search |
 
 ## Brand
@@ -47,10 +47,11 @@ chaoxo.com's hours, phone and address blocks are Square template filler ((555) 5
 | Hero | Google Maps photo of the dining room (sent by Kevin, cropped to remove Maps buttons/caption; marked "may be subject to copyright") | **Not yet** — ask owner at pitch; swap for stock if no | `images/dining-room.webp` |
 | Menu: Birria Pho | Google listing photo | Not yet | `images/birria-pho.webp` |
 | Menu: Birria Dumplings | Google listing photo | Not yet | `images/birria-dumplings.webp` |
-| Menu: Lomo Saltado | Google listing photo (dish name confirmed by Kevin) | Not yet | `images/lomo-saltado.webp` |
-| Menu: Ube drinks | Google listing photo | Not yet | `images/purple-drinks.webp` |
-| Menu: Fruit drinks | Google listing photo | Not yet | `images/fruit-drinks.webp` |
-| Menu: Dessert | Google listing photo | Not yet | `images/dessert.webp` |
+| Menu: Lomo Saltado | Google listing photo (Kevin chose to keep this name 2026-09-29; not on their online menu, so the price slot is hidden) | Not yet | `images/lomo-saltado.webp` |
+| Menu: Ube Coffee | Google listing photo (matched to their menu item) | Not yet | `images/purple-drinks.webp` |
+| Menu: Mango Fruit Drinks | Google listing photo. No exact match on their menu (compared with Mango Calamansi and Pineapple Tamarindo photos), so Kevin OK'd a descriptive name; price hidden | Not yet | `images/fruit-drinks.webp` |
+| Menu: 17 more dish/drink photos | Their own product photos from chaoxo.com online ordering, downloaded 2026-09-29 with Kevin's OK. Skipped Anthony Bourdain Pho (has a "Hypic" app watermark) | Kevin OK'd for the demo; confirm with owner | `images/menu/*.webp` |
+| Menu: Pandan Halo | Google listing photo (matches their description: jellies, pandan, ube ice cream) | Not yet | `images/dessert.webp` |
 | Our Story | Reuses fruit-drinks photo as a stand-in | Not yet | `images/fruit-drinks.webp` |
 | Owner | none yet | | |
 
@@ -79,8 +80,8 @@ The data file is `.js`, not `.json`, so the site still works when opened straigh
 - [ ] Real phone number (replace every `+16195550123` / `(619) 555-0123`)
 - [ ] Sunday hours
 - [ ] Owner's OK to use their Google photos (or replace them)
-- [ ] Names of the fruit drinks and the dessert
-- [ ] Full menu with prices (menu photo, screenshots of chaoxo.com's order page, or permission to read their Square store data)
+- [ ] Lomo Saltado and Mango Fruit Drinks: ask the owner for real names/prices
+- [ ] Owner confirms menu prices are current (pulled 2026-09-29)
 - [ ] Owner's photo for Our Story (text now comes from their About us)
 - [ ] Instagram handle (turns on the Instagram grid)
 - [ ] Remove `noindex` in `index.html` and set `demo: false` in `data/site.js`
