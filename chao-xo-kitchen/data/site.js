@@ -52,47 +52,108 @@ window.SITE = {
     alt: "Chào XO Kitchen dining room with wooden booths, hanging plants, woven pendant lights and red bar stools",
     headline: "Asian Comfort Food in National City",
     // Words wrapped in ** show in bold.
-    subhead: "**Chào XO Kitchen**, serving **pho, birria dumplings** and **house drinks** on E Plaza Blvd in **National City**."
+    subhead: "**Chào XO Kitchen**, serving **phở, birria dumplings** and **house drinks** on E Plaza Blvd in **National City**."
   },
 
   rating: { source: "Google", value: 4.6, count: 412 },
 
   menu: {
     // Items with an image get a photo card; items without one get a compact row.
+    // Source: chaoxo.com online ordering (Square), pulled 2026-09-29 with Kevin's OK.
     categories: [
       {
-        name: "Pho & noodles",
+        name: "Phở",
         items: [
-          { name: "Birria Pho", price: null, description: "Pho meets birria: shredded beef and rice noodles in a rich red broth.", image: "images/birria-pho.webp", alt: "Bowl of birria pho with shredded beef, rice noodles and green onion in a red broth" },
-          { name: "Short Rib Pho", price: null, description: null },
-          { name: "Tomyum Pasta", price: null, description: null }
+          { name: "Birria Phở", price: 18, description: "Tender birria beef broth, rich and savory, combined with traditional Vietnamese phở noodles, fresh vegetables, and herbs", image: "images/birria-pho.webp", alt: "Bowl of birria phở with shredded beef, rice noodles and green onion in a red broth" },
+          { name: "Chicken Phở", price: 15, description: "Chicken meat, rice noodles, onion mix" },
+          { name: "Shrimp Phở", price: 17, description: "Shrimp, rice noodles, onion mix" },
+          { name: "Pork Belly Phở", price: 15, description: "Pork belly, rice noodles, onion mix" },
+          { name: "Ribeye Raresteak Pho", price: 15.75, description: "Ribeye Raresteak Phở" },
+          { name: "Brisket Phở", price: 15.75, description: "4-hour-braised brisket, tender with a slight chew" },
+          { name: "Ribeye & Brisket Pho", price: 16.5, description: "Ribeye Raresteak & Brisket Phở" },
+          { name: "COMBO Pho (ribeye, brisket, tripe, meatball)", price: 17.25, description: "Ribeye, brisket, tripe, meatball" },
+          { name: "Double Rib Phở", price: 18.5, description: "12 hours simmered beef broth, rib bone, rice noodle, onion, cilantro" },
+          { name: "Anthony Bourdain Pho", price: 19.75, description: "Aka Garlic Ribeye Phở. Wok-Seared Ribeye with scallions, red onions & garlic. Smoky, bold, and packed with flavor." },
+          { name: "Meatball Phở", price: 15, description: "Phở with meatball" },
+          { name: "Ribbone & Ribeye Phở", price: 18, description: "12 hours simmered beef broth, sliced ribeye, ribbone, rice noodles, onion mix" },
+          { name: "Vegetarian Phở", price: 16, description: "Tofu, bok choy, green bean, eggplants, veggie stock, rice noodles, onion mix" }
         ]
       },
       {
-        name: "Plates & curry",
+        name: "Rice",
         items: [
           { name: "Lomo Saltado", price: null, description: "Beef stir-fried with peppers and onions, served with fries, rice and green sauce.", image: "images/lomo-saltado.webp", alt: "Beef stir-fry with peppers and onions, fries, white rice and green sauce" },
-          { name: "Kare Curry", price: null, description: null }
+          { name: "Ribeye Mushroom Rice", price: 18, description: "Sliced ribeye, white mushroom, gravy, jasmine rice, served with house green sauce" },
+          { name: "Fried Rice", price: 15, description: "Aromatic jasmine rice wok-fried with sweet and tangy tamarind sauce, fresh vegetables, and with chicken" },
+          { name: "Kare Curry", price: 21, description: "A classic Filipino dish of pork belly stewed in a rich, savory peanut sauce. Served with steamed rice and bagoong (shrimp paste)" }
         ]
       },
       {
-        name: "Small bites",
+        name: "Noodles",
         items: [
-          { name: "Birria Dumplings", price: null, description: "Crispy dumplings in consommé, topped with cabbage, onion and chili.", image: "images/birria-dumplings.webp", alt: "Birria dumplings in consommé topped with purple cabbage and onion" }
+          { name: "Tomyum Pasta", price: 19, description: "Made with fresh shrimp, mushrooms, and vegetables, this dish is cooked in a creamy Tom Yum sauce that is both tangy and spicy" },
+          { name: "Garlic Noodles", price: 15, description: "Saute spaghetti noodles, garlic butter, cotija, parsley flake, served with house green sauce" },
+          { name: "Pad Thai", price: 16, description: "Tamarindo sauce, rice noodles, bean sprouts, egg, green onions, peanuts" }
+        ]
+      },
+      {
+        name: "Appetizers",
+        items: [
+          { name: "Spicy Birria Dumplings", price: 14, description: "Chicken veggie dumplings, red cabbage, scallions, birria consome, cotija", image: "images/birria-dumplings.webp", alt: "Birria dumplings in consommé topped with purple cabbage and onion" },
+          { name: "Nuggets & Fries", price: 9, description: null },
+          { name: "Salt & Pepper Shrimp", price: 15, description: "Tender and buttery with a crisp salt and pepper crust" },
+          { name: "Truffle Aioli Fries", price: 14, description: "Skinny Fries with Truffle Aioli sauce" },
+          { name: "Parmesan Fries", price: 11, description: "Skinny Fries with Parmesan cheese" },
+          { name: "Crispy Calamari", price: 15, description: "Salt & Pepper, ranch" },
+          { name: "Regular Fries", price: 9, description: "Skinny Fries" },
+          { name: "Coconut Seafood Ceviche", price: 14, description: "Shrimps, white fish, scallops, coconut milk, lime juice, basil oil, chili oil, pico de gallo, served with house chips" },
+          { name: "Spring Rolls", price: 11, description: "Green leaf, carrot, vermicelli, rice paper, peanut sauce" },
+          { name: "Egg Rolls", price: 11, description: "Wonton skin, pork, carrot, mushroom, glass noodle" },
+          { name: "Birria Truffle Fries", price: 16, description: "Crispy fries, chuck roast, birria consome, truffle bechamel, parsley, onion mix, cotija" },
+          { name: "Crab Guacamole", price: 17, description: "Creamy avocado, crab meat, lime, cilantro, diced tomatoes, cotija, chili oil, served with house chips" },
+          { name: "Fried Chicken Wings", price: 13, description: "Crispy battered wings, cotija cheese" },
+          { name: "Crab Ragoon", price: 11, description: "Imitation crab meat, cream cheese, wonton skin, served with sweet and sour sauce" },
+          { name: "Mango Salad", price: 14, description: null },
+          { name: "Popcorn Chicken", price: 8, description: "Small, bite sized chunks of boneless chicken that are breaded or battered and deep-fried until golden and crispy." }
         ]
       },
       {
         name: "Drinks",
         items: [
-          { name: "Ube drinks", price: null, description: "Including their house-made ube coffee.", image: "images/purple-drinks.webp", alt: "Two iced purple drinks in Chào XO cups" },
+          { name: "Ube Coffee", price: 7, description: "Vietnamese coffee with Ube foam", image: "images/purple-drinks.webp", alt: "Two iced purple ube drinks in Chào XO cups" },
           { name: "Fruit drinks", price: null, description: null, todo: "[Drink names]", image: "images/fruit-drinks.webp", alt: "Two iced fruit drinks with mango, one with a sugar rim and strawberry" },
-          { name: "Pandan Horchata", price: null, description: null }
+          { name: "Mango Calamansi", price: 7, description: "Mango Minty Calamansi" },
+          { name: "Black Tea (sweetened)", price: 5, description: "Black Tea sweetened" },
+          { name: "Vietnamese Iced Coffee", price: 6, description: "Strong black coffee brewed with a metal drip filter, mixed with sweetened condensed milk and served over ice." },
+          { name: "Banana Coffee", price: 8, description: "Vietnamese Coffee with Banana foam" },
+          { name: "Green Iced Tea (unsweetened)", price: 6, description: "Jasmine green iced tea freshly brewed" },
+          { name: "Minty Calamansi", price: 6, description: "Calamansi juice infused with mint leaves" },
+          { name: "Pina Colada", price: 9, description: null },
+          { name: "Matcha Latte", price: 7, description: "Our Matcha Latte is a creamy, energizing blend of premium Japanese matcha and velvety milk, lightly sweetened for the perfect balance." },
+          { name: "Pandan Horchata", price: 7, description: "Our Pandan Horchata blends the creamy, cinnamon-kissed flavor of traditional horchata with the fragrant, nutty sweetness of pandan." },
+          { name: "SODA", price: 3, description: null },
+          { name: "Cloud Vietnamese Coffee", price: 7, description: "Vietnamese Coffee with extra milk to soften the bitterness" },
+          { name: "Hot Tea", price: 5, description: null },
+          { name: "Strawberry Foam Coffee", price: 7, description: "Vietnamese coffee with strawberry foam" },
+          { name: "Lychee Green Iced Tea", price: 7, description: null },
+          { name: "Lychee Lemonade", price: 6, description: "Lemonade with Lychee flavor" },
+          { name: "Peach Tamarindo", price: 6, description: "Peach Tamarindo drink with Tajin" },
+          { name: "Egg Coffee", price: 7, description: "Vietnamese with egg coffee" },
+          { name: "Banana Matcha", price: 8, description: "Matcha with banana foam" },
+          { name: "Ube Horchata", price: 7, description: "Horchata fusion with ube" },
+          { name: "Pineapple Tamarindo", price: 6, description: "Pineapple Tamarindo with Tajin" },
+          { name: "Ice Pumpkin Espresso", price: 7, description: null }
         ]
       },
       {
-        name: "Dessert",
+        name: "Desserts",
         items: [
-          { name: "Dessert", price: null, description: null, todo: "[Dessert name]", image: "images/dessert.webp", alt: "Dessert in a coupe glass with purple ice cream and an edible flower" }
+          { name: "Pandan Halo", price: 10, description: "A refreshing mix jellies, fruits, topped with pandan, evaporated milk, ube ice cream", image: "images/dessert.webp", alt: "Pandan Halo in a coupe glass with jellies and ube ice cream topped with an edible flower" },
+          { name: "Mango Sticky Rice", price: 13, description: "(seasonal) Fresh mango, sticky rice, coconut milk, peanuts" },
+          { name: "Chè Thái", price: 8, description: "Vietnamese fruit cocktail. Mix jellies, fruits, milk" },
+          { name: "Mango Sago", price: 7, description: "A refreshing dessert made with ripe mangoes blended, coconut milk, mango jellies and small tapioca pearls" },
+          { name: "Fried Banana Sticky Rice", price: 9.5, description: "Fried battered banana, coconut sauce, sticky rice, salted sesame" },
+          { name: "Ube Ice Cream", price: 5, description: null }
         ]
       }
     ],
@@ -128,7 +189,7 @@ window.SITE = {
 
   catering: {
     // From chaoxo.com.
-    text: "Planning a party, celebration, or something special? Chào XO does catering, food trays and custom event menus."
+    text: "Planning a party, celebration, or something special? Chào XO does catering, food trays and custom event menus. Party trays include Spring Rolls, Egg Rolls, Coconut Ceviche, Chicken Wings, Crab Ragoon, Pad Thai, Garlic Noodles, Ribeye Mushroom Rice, Tomyum Pasta, Kare Curry, Fried Rice and 'Saltado' Shaken."
   },
 
   analytics: {
