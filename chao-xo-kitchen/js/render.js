@@ -226,10 +226,20 @@
   });
   var tags = $('#story-tags');
   (S.story.tags || []).forEach(function (t) { tags.appendChild(el('span', 'tag', t)); });
+  // Catering
   if (S.catering && S.catering.text) {
-    var c = $('#catering');
-    c.textContent = S.catering.text;
-    c.hidden = false;
+    $('#catering-title').textContent = S.catering.headline || 'Catering';
+    $('#catering-text').textContent = S.catering.text;
+    var trays = $('#catering-trays');
+    (S.catering.trays || []).forEach(function (t) { trays.appendChild(el('li', null, t)); });
+    var photo = $('#catering-photo');
+    if (S.catering.image) {
+      photo.style.backgroundImage = 'url("' + S.catering.image + '")';
+      photo.setAttribute('aria-label', S.catering.alt || '');
+    } else {
+      photo.remove();
+    }
+    $('#catering-section').hidden = false;
   }
 
   if (S.demo) $('#demo-line').hidden = false;
