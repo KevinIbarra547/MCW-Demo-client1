@@ -119,17 +119,49 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot">
+    <div class="newsletter" id="newsletter" hidden>
       <div>
-        <a class="logo" href="#home" data-text="business.name"></a>
-        <address class="foot-addr" id="foot-addr"></address>
+        <h2 id="newsletter-title"></h2>
+        <p id="newsletter-text"></p>
+      </div>
+      <a class="btn btn-accent" id="newsletter-btn" href="#" data-track="contact"></a>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="badge" href="#home" aria-label="Back to top"><span>Chào</span><span>XO</span></a>
+        <p id="foot-blurb"></p>
+        <div class="social" id="social" aria-label="Social media"></div>
+      </div>
+      <nav aria-label="Footer">
+        <h3>Explore</h3>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order online</a>
+        <a href="#catering-section">Catering &amp; trays</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#gallery">Photos</a>
+        <a href="#story">Our story</a>
+      </nav>
+      <div>
+        <h3>Hours</h3>
+        <ul class="foot-hours" id="foot-hours"></ul>
       </div>
       <div>
-        <div><a data-tel href="#" data-track="call"></a></div>
-        <div><a data-directions href="#" data-track="directions">Get directions</a></div>
+        <h3>Visit</h3>
+        <address class="foot-addr" id="foot-addr"></address>
+        <a data-directions href="#" data-track="directions">Get directions →</a>
+        <a data-tel href="#" data-track="call"></a>
+        <div id="foot-apps"></div>
       </div>
     </div>
-    <p class="demo-line" id="demo-line" hidden>Demo by Mainstreet Sites SD</p>
+
+    <div class="payments" id="payments" hidden><span>Pay online with</span></div>
+
+    <div class="legal">
+      <span id="copyright"></span>
+      <span id="demo-line" hidden>Demo preview, not the live site</span>
+      <span id="credit"></span>
+    </div>
   </div>
 </footer>
 

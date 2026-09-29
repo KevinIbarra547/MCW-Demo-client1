@@ -206,7 +206,6 @@
   addr.appendChild(document.createTextNode(b.address.street));
   addr.appendChild(el('br'));
   addr.appendChild(document.createTextNode(b.address.city + ', ' + b.address.region + ' ' + b.address.postalCode));
-  $('#foot-addr').textContent = fullAddress;
   var map = $('#map');
   map.title = 'Map to ' + b.name + ', ' + b.address.street;
   map.src = 'https://www.google.com/maps?q=' + q + '&output=embed';
@@ -254,6 +253,60 @@
     $('#catering-section').hidden = false;
   }
 
+  // Footer
+  var f = S.footer || {};
+  if (f.newsletter) {
+    $('#newsletter-title').textContent = f.newsletter.title;
+    $('#newsletter-text').textContent = f.newsletter.text;
+    var nb = $('#newsletter-btn');
+    nb.textContent = f.newsletter.button; nb.href = f.newsletter.url;
+    $('#newsletter').hidden = false;
+  }
+  $('#foot-blurb').textContent = f.blurb || b.tagline;
+  var social = $('#social');
+  (f.social || []).forEach(function (sn) {
+    var a = el(sn.url ? 'a' : 'span', 'soc', sn.short);
+    if (sn.url) { a.href = sn.url; a.setAttribute('aria-label', sn.name); }
+    else { a.title = sn.name + ' (handle needed)'; a.setAttribute('aria-label', sn.name + ', link coming soon'); a.classList.add('soc-todo'); }
+    social.appendChild(a);
+  });
+  var fa = $('#foot-addr');
+  fa.appendChild(document.createTextNode(b.address.street));
+  fa.appendChild(el('br'));
+  fa.appendChild(document.createTextNode(b.address.city + ', ' + b.address.region + ' ' + b.address.postalCode));
+  if (S.ordering.apps && S.ordering.apps.length) {
+    var apps = $('#foot-apps');
+    apps.appendChild(el('h3', null, 'Also on'));
+    S.ordering.apps.forEach(function (app) {
+      var a = el('a', null, app.name); a.href = app.url; a.setAttribute('data-track', 'order');
+      apps.appendChild(a);
+    });
+  }
+  // Hours, grouping days in a row that share the same hours (Mon first)
+  var fh = $('#foot-hours'), SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var hoursText = function (h) { return h === 'closed' ? 'Closed' : h ? fmtTime(h.open) + ' – ' + fmtTime(h.close) : null; };
+  var groups = [];
+  [1, 2, 3, 4, 5, 6, 0].forEach(function (d) {
+    var t = hoursText(S.hours[DAYS[d][0]]), last = groups[groups.length - 1];
+    if (last && last.t === t && t !== null) last.to = d; else groups.push({ from: d, to: d, t: t });
+  });
+  groups.forEach(function (g) {
+    var li = el('li');
+    li.appendChild(el('span', null, SHORT[g.from] + (g.to !== g.from ? '–' + SHORT[g.to] : '')));
+    li.appendChild(g.t ? el('span', null, g.t) : placeholder('[hours]'));
+    fh.appendChild(li);
+  });
+  if (f.payments && f.payments.length) {
+    var pay = $('#payments');
+    f.payments.forEach(function (p) { pay.appendChild(el('span', 'pay', p)); });
+    pay.hidden = false;
+  }
+  $('#copyright').textContent = '© ' + new Date().getFullYear() + ' ' + b.name;
+  if (f.credit) {
+    var cr = $('#credit');
+    if (f.credit.url) { var ca = el('a', null, f.credit.text); ca.href = f.credit.url; cr.appendChild(ca); }
+    else cr.textContent = f.credit.text;
+  }
   if (S.demo) $('#demo-line').hidden = false;
 
   // Structured data for search engines, built only from confirmed facts.
