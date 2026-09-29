@@ -45,8 +45,8 @@ window.SITE = {
     orderUrl: "https://www.chaoxo.com/",
     // Fulfillment their Square store offers (chaoxo.com). Dine-in from the Google listing.
     options: [
-      { icon: "🥡", title: "Pickup", text: "Order ahead on their website and pick it up at the counter.", button: "Order pickup", url: "https://www.chaoxo.com/", style: "accent" },
-      { icon: "🛵", title: "Delivery", text: "Delivery through their own online ordering or DoorDash.", button: "Order delivery", url: "https://www.chaoxo.com/", style: "dark" },
+      { icon: "🥡", title: "Pickup", text: "Order ahead online and pick it up when it's ready.", button: "Order pickup", url: "https://www.chaoxo.com/", style: "accent" },
+      { icon: "🛵", title: "Delivery", text: "Get it delivered through our online ordering or DoorDash.", button: "Order delivery", url: "https://www.chaoxo.com/", style: "dark" },
       { icon: "🍽️", title: "Dine in", text: "Booths, hanging plants and good vibes on E Plaza Blvd.", button: "Get directions", url: "directions", style: "white" }
     ],
     apps: [

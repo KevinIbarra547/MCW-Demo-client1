@@ -152,6 +152,23 @@
     note.hidden = true;
   }
 
+  // Ways to order
+  var orderBox = $('#order-options');
+  (S.ordering.options || []).forEach(function (o) {
+    var card = el('div', 'order-card');
+    var h = el('h3');
+    var icon = el('span', null, o.icon + ' '); icon.setAttribute('aria-hidden', 'true');
+    h.appendChild(icon); h.appendChild(document.createTextNode(o.title));
+    card.appendChild(h);
+    card.appendChild(el('p', null, o.text));
+    var a = el('a', 'btn btn-' + o.style, o.button);
+    if (o.url === 'directions') { a.href = directionsUrl; a.setAttribute('data-track', 'directions'); }
+    else { a.href = o.url; a.setAttribute('data-track', 'order'); }
+    card.appendChild(a);
+    orderBox.appendChild(card);
+  });
+  if (!orderBox.children.length) $('#order').hidden = true;
+
   // Reviews
   if (S.rating) {
     var r = $('#rating');
