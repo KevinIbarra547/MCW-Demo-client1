@@ -13,12 +13,17 @@
 | Hours | Mon–Tue, Thu–Sat 11 AM–8 PM; Wed closed; **Sunday unknown** | Web search (Mindtrip/restaurant listings); Google showed "Closes 8 PM" |
 | Phone | **Placeholder** (619) 555-0123 (fake 555 number) | Kevin said a real number isn't needed for the demo |
 | Email | none | |
-| Cuisine | Asian fusion | Google listing ("Asian"), "Asian Fusion" on their cups |
+| Cuisine | Asian fusion / "Asian comfort food" | Google listing ("Asian"), cups ("Asian Fusion"), chaoxo.com banner ("ASIAN COMFORT FOOD") |
+| Tagline | "made with love" | chaoxo.com and their cups |
+| About text (Our Story) | Their own "About us" paragraph | chaoxo.com, copied word for word |
+| Catering | Offers catering, food trays, custom event menus | chaoxo.com |
 | Price range | $10–20 per person | Google listing |
 | Google rating | 4.6 from 412 reviews | Google listing screenshot, 2026-09-29 |
 | Menu items named on site | Birria Pho, Birria Dumplings, Lomo Saltado, Short Rib Pho, Kare Curry, Tomyum Pasta, Pandan Horchata, house-made ube coffee | Web search (DoorDash/Mindtrip summaries), Google reviews |
-| Menu prices | **Not shown** — couldn't reach their menu | |
-| Ordering | DoorDash store page | Web search |
+| Menu prices | **Not shown yet** — see note below | |
+
+chaoxo.com's hours, phone and address blocks are Square template filler ((555) 555-5555, San Francisco), so they were **not** used. The menu there loads from Square's store data; pulling that was blocked by the session's permission check, so prices still need a menu photo/screenshot or Kevin's OK.
+| Ordering | Own Square online ordering at chaoxo.com (pickup + delivery); also DoorDash | chaoxo.com; web search |
 
 ## Brand
 - Accent color: `#C4441C` (from the orange "CHÀO" logo on their cups, darkened to 5.0:1 with white text)
@@ -31,8 +36,9 @@
 | Today's deal card | no | no confirmed deal |
 | Delivery apps ("Also on") | yes, DoorDash only | public DoorDash listing |
 | Instagram grid | no | handle unknown |
-| Our Story | placeholder only | needs owner's story after signing |
-| Family owned / catering tags | no | not confirmed |
+| Our Story | yes, their own About text | chaoxo.com |
+| Catering tag + line | yes | chaoxo.com |
+| Family owned tag | no | not confirmed |
 | First-time offer | no | not confirmed |
 
 ## Photos
@@ -57,12 +63,14 @@ Kevin chose to use Google photos for this private pitch demo (2026-09-29). The p
 | Kristina B. (5★, ~7 months ago) | Google review, screenshot from Kevin | Yes, trimmed with "…" |
 
 ## Files
-- `index.html`: page content (plus the LocalBusiness JSON-LD)
+- `data/site.js`: **all content** (business info, hours, menu, reviews, story, analytics keys). Edit this to update the site.
+- `index.html`: page skeleton, the same for every restaurant (only `<title>` and meta description are per-client)
+- `js/render.js`: builds the page from `data/site.js`, including the JSON-LD
+- `js/main.js`: menu tabs, Open-now badge, button tracking, Cloudflare beacon
 - `css/styles.css`: all styles; brand colors and fonts are the `:root` variables at the top
-- `js/main.js`: menu tabs, Open-now badge and today's hours, button tracking
 - `images/`: photos (see Photos above)
 
-Split into separate files at Kevin's request (2026-09-29).
+The data file is `.js`, not `.json`, so the site still works when opened straight from a folder (browsers block reading `.json` files that way).
 
 ## Forms
 - None. Call and Directions buttons only.
@@ -72,9 +80,8 @@ Split into separate files at Kevin's request (2026-09-29).
 - [ ] Sunday hours
 - [ ] Owner's OK to use their Google photos (or replace them)
 - [ ] Names of the fruit drinks and the dessert
-- [ ] Menu prices, or a link to their full menu on their own site
-- [ ] Owner/family name, story and photo for Our Story
+- [ ] Full menu with prices (menu photo, screenshots of chaoxo.com's order page, or permission to read their Square store data)
+- [ ] Owner's photo for Our Story (text now comes from their About us)
 - [ ] Instagram handle (turns on the Instagram grid)
-- [ ] Their own ordering link, if they prefer it over DoorDash
-- [ ] Remove `noindex` and the "Demo by Mainstreet Sites SD" line
-- [ ] Fill `[SITE_KEY]`, `[HUB_URL]`, `[CF_TOKEN]`
+- [ ] Remove `noindex` in `index.html` and set `demo: false` in `data/site.js`
+- [ ] Fill `analytics` in `data/site.js` (siteKey, hubUrl, cfToken)
