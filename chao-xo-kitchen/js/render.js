@@ -47,6 +47,18 @@
   });
   $$('[data-directions]').forEach(function (a) { a.href = directionsUrl; });
 
+  // Top info bar (today's hours are filled in by main.js) and features strip
+  $('#infobar-addr').textContent = b.address.street.replace(/ Ste .*/, '') + ', ' + b.address.city;
+  var am = $('#amenities');
+  (S.amenities || []).forEach(function (a) {
+    var li = el('li');
+    var icon = el('span', null, a.icon); icon.setAttribute('aria-hidden', 'true');
+    li.appendChild(icon);
+    li.appendChild(document.createTextNode(' ' + a.label));
+    am.appendChild(li);
+  });
+  am.hidden = !am.children.length;
+
   // Hero
   var heroImg = $('#hero-img');
   heroImg.src = S.hero.image;
@@ -140,6 +152,23 @@
     note.hidden = true;
   }
 
+  // Ways to order
+  var orderBox = $('#order-options');
+  (S.ordering.options || []).forEach(function (o) {
+    var card = el('div', 'order-card');
+    var h = el('h3');
+    var icon = el('span', null, o.icon + ' '); icon.setAttribute('aria-hidden', 'true');
+    h.appendChild(icon); h.appendChild(document.createTextNode(o.title));
+    card.appendChild(h);
+    card.appendChild(el('p', null, o.text));
+    var a = el('a', 'btn btn-' + o.style, o.button);
+    if (o.url === 'directions') { a.href = directionsUrl; a.setAttribute('data-track', 'directions'); }
+    else { a.href = o.url; a.setAttribute('data-track', 'order'); }
+    card.appendChild(a);
+    orderBox.appendChild(card);
+  });
+  if (!orderBox.children.length) $('#order').hidden = true;
+
   // Reviews
   if (S.rating) {
     var r = $('#rating');
@@ -177,7 +206,6 @@
   addr.appendChild(document.createTextNode(b.address.street));
   addr.appendChild(el('br'));
   addr.appendChild(document.createTextNode(b.address.city + ', ' + b.address.region + ' ' + b.address.postalCode));
-  $('#foot-addr').textContent = fullAddress;
   var map = $('#map');
   map.title = 'Map to ' + b.name + ', ' + b.address.street;
   map.src = 'https://www.google.com/maps?q=' + q + '&output=embed';
@@ -197,12 +225,88 @@
   });
   var tags = $('#story-tags');
   (S.story.tags || []).forEach(function (t) { tags.appendChild(el('span', 'tag', t)); });
-  if (S.catering && S.catering.text) {
-    var c = $('#catering');
-    c.textContent = S.catering.text;
-    c.hidden = false;
+  // Gallery
+  if (S.gallery && S.gallery.photos && S.gallery.photos.length) {
+    $('#gallery-title').textContent = S.gallery.title || 'Photos';
+    var gal = $('#gallery-grid');
+    S.gallery.photos.forEach(function (ph) {
+      var img = el('img');
+      img.src = ph.image; img.alt = ph.alt || ''; img.loading = 'lazy';
+      gal.appendChild(img);
+    });
+    $('#gallery').hidden = false;
   }
 
+  // Catering
+  if (S.catering && S.catering.text) {
+    $('#catering-title').textContent = S.catering.headline || 'Catering';
+    $('#catering-text').textContent = S.catering.text;
+    var trays = $('#catering-trays');
+    (S.catering.trays || []).forEach(function (t) { trays.appendChild(el('li', null, t)); });
+    var photo = $('#catering-photo');
+    if (S.catering.image) {
+      photo.style.backgroundImage = 'url("' + S.catering.image + '")';
+      photo.setAttribute('aria-label', S.catering.alt || '');
+    } else {
+      photo.remove();
+    }
+    $('#catering-section').hidden = false;
+  }
+
+  // Footer
+  var f = S.footer || {};
+  if (f.newsletter) {
+    $('#newsletter-title').textContent = f.newsletter.title;
+    $('#newsletter-text').textContent = f.newsletter.text;
+    var nb = $('#newsletter-btn');
+    nb.textContent = f.newsletter.button; nb.href = f.newsletter.url;
+    $('#newsletter').hidden = false;
+  }
+  $('#foot-blurb').textContent = f.blurb || b.tagline;
+  var social = $('#social');
+  (f.social || []).forEach(function (sn) {
+    var a = el(sn.url ? 'a' : 'span', 'soc', sn.short);
+    if (sn.url) { a.href = sn.url; a.setAttribute('aria-label', sn.name); }
+    else { a.title = sn.name + ' (handle needed)'; a.setAttribute('aria-label', sn.name + ', link coming soon'); a.classList.add('soc-todo'); }
+    social.appendChild(a);
+  });
+  var fa = $('#foot-addr');
+  fa.appendChild(document.createTextNode(b.address.street));
+  fa.appendChild(el('br'));
+  fa.appendChild(document.createTextNode(b.address.city + ', ' + b.address.region + ' ' + b.address.postalCode));
+  if (S.ordering.apps && S.ordering.apps.length) {
+    var apps = $('#foot-apps');
+    apps.appendChild(el('h3', null, 'Also on'));
+    S.ordering.apps.forEach(function (app) {
+      var a = el('a', null, app.name); a.href = app.url; a.setAttribute('data-track', 'order');
+      apps.appendChild(a);
+    });
+  }
+  // Hours, grouping days in a row that share the same hours (Mon first)
+  var fh = $('#foot-hours'), SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var hoursText = function (h) { return h === 'closed' ? 'Closed' : h ? fmtTime(h.open) + ' – ' + fmtTime(h.close) : null; };
+  var groups = [];
+  [1, 2, 3, 4, 5, 6, 0].forEach(function (d) {
+    var t = hoursText(S.hours[DAYS[d][0]]), last = groups[groups.length - 1];
+    if (last && last.t === t && t !== null) last.to = d; else groups.push({ from: d, to: d, t: t });
+  });
+  groups.forEach(function (g) {
+    var li = el('li');
+    li.appendChild(el('span', null, SHORT[g.from] + (g.to !== g.from ? '–' + SHORT[g.to] : '')));
+    li.appendChild(g.t ? el('span', null, g.t) : placeholder('[hours]'));
+    fh.appendChild(li);
+  });
+  if (f.payments && f.payments.length) {
+    var pay = $('#payments');
+    f.payments.forEach(function (p) { pay.appendChild(el('span', 'pay', p)); });
+    pay.hidden = false;
+  }
+  $('#copyright').textContent = '© ' + new Date().getFullYear() + ' ' + b.name;
+  if (f.credit) {
+    var cr = $('#credit');
+    if (f.credit.url) { var ca = el('a', null, f.credit.text); ca.href = f.credit.url; cr.appendChild(ca); }
+    else cr.textContent = f.credit.text;
+  }
   if (S.demo) $('#demo-line').hidden = false;
 
   // Structured data for search engines, built only from confirmed facts.

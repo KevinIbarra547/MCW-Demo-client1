@@ -43,6 +43,12 @@ window.SITE = {
 
   ordering: {
     orderUrl: "https://www.chaoxo.com/",
+    // Fulfillment their Square store offers (chaoxo.com). Dine-in from the Google listing.
+    options: [
+      { icon: "🥡", title: "Pickup", text: "Order ahead online and pick it up when it's ready.", button: "Order pickup", url: "https://www.chaoxo.com/", style: "accent" },
+      { icon: "🛵", title: "Delivery", text: "Get it delivered through our online ordering or DoorDash.", button: "Order delivery", url: "https://www.chaoxo.com/", style: "dark" },
+      { icon: "🍽️", title: "Dine in", text: "Booths, hanging plants and good vibes on E Plaza Blvd.", button: "Get directions", url: "directions", style: "white" }
+    ],
     apps: [
       { name: "DoorDash", url: "https://www.doordash.com/store/chao-xo-national-city-27736345/" }
     ]
@@ -55,6 +61,16 @@ window.SITE = {
     // Words wrapped in ** show in bold.
     subhead: "**Chào XO Kitchen**, serving **phở, birria dumplings** and **house drinks** on E Plaza Blvd in **National City**."
   },
+
+  // Shown as a strip under the hero. Only list what's confirmed (source in client-spec.md).
+  amenities: [
+    { icon: "🥬", label: "Vegetarian options" },
+    { icon: "🧒", label: "Kids' menu" },
+    { icon: "📶", label: "Free Wi-Fi" },
+    { icon: "🥡", label: "Pickup" },
+    { icon: "🛵", label: "Delivery" },
+    { icon: "🎉", label: "Catering" }
+  ],
 
   rating: { source: "Google", value: 4.6, count: 412 },
 
@@ -189,8 +205,38 @@ window.SITE = {
   },
 
   catering: {
-    // From chaoxo.com.
-    text: "Planning a party, celebration, or something special? Chào XO does catering, food trays and custom event menus. Party trays include Spring Rolls, Egg Rolls, Coconut Ceviche, Chicken Wings, Crab Ragoon, Pad Thai, Garlic Noodles, Ribeye Mushroom Rice, Tomyum Pasta, Kare Curry, Fried Rice and 'Saltado' Shaken."
+    // From chaoxo.com. Trays are priced by size, so no prices here.
+    headline: "Feeding a crowd? We've got trays.",
+    text: "Birthdays, office lunches, family parties: Chào XO does catering, food trays and custom event menus.",
+    trays: ["Spring Rolls", "Egg Rolls", "Coconut Ceviche", "Chicken Wings", "Crab Ragoon", "Pad Thai", "Garlic Noodles", "Ribeye Mushroom Rice", "Tomyum Pasta", "Kare Curry", "Fried Rice", "'Saltado' Shaken"],
+    image: "images/menu/spring-rolls.webp",
+    alt: "Fresh spring rolls with peanut dipping sauce"
+  },
+
+  gallery: {
+    title: "Inside Chào XO",
+    photos: [
+      { image: "images/dining-room.webp", alt: "The dining room with wooden booths, hanging plants and woven pendant lights" },
+      { image: "images/menu/crab-guacamole.webp", alt: "Crab guacamole topped with cotija and chili oil" },
+      { image: "images/purple-drinks.webp", alt: "Two iced ube drinks in Chào XO cups" },
+      { image: "images/menu/salt-and-pepper-shrimp.webp", alt: "Salt and pepper shrimp with sliced jalapeños" },
+      { image: "images/menu/pandan-horchata.webp", alt: "Iced pandan horchata next to a mango drink" }
+    ]
+  },
+
+  footer: {
+    blurb: "Asian comfort food, made with love. Noodles, rice bowls, teas and street food on E Plaza Blvd.",
+    // Their newsletter signup lives on chaoxo.com, so the footer links there instead of collecting emails itself.
+    newsletter: { title: "Join the Chào XO family", text: "Get new drops, tasty updates and offers from the kitchen.", button: "Sign me up", url: "https://www.chaoxo.com/" },
+    // Payment methods their online ordering accepts (Square store settings on chaoxo.com).
+    payments: ["Visa", "Mastercard", "Amex", "Discover", "JCB", "Apple Pay", "Google Pay", "Cash App Pay"],
+    // DEMO: handles unknown. url: null shows the icon as a placeholder.
+    social: [
+      { name: "Instagram", short: "IG", url: null },
+      { name: "Facebook", short: "FB", url: null },
+      { name: "TikTok", short: "TT", url: null }
+    ],
+    credit: { text: "Website by Mainstreet Sites SD", url: null }
   },
 
   analytics: {

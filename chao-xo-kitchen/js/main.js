@@ -40,6 +40,11 @@
     if (row) { row.classList.add('today'); row.firstElementChild.textContent += ' (today)'; }
 
     var h = S.hours[keys[day]];
+    var bar = document.getElementById('infobar-hours');
+    if (h != null) {
+      bar.textContent = '🕚 ' + (h === 'closed' ? 'Closed today' : 'Open today ' + label(h.open) + ' – ' + label(h.close));
+      bar.hidden = false;
+    }
     if (h == null) return;
     var status = document.getElementById('status'), text = document.getElementById('status-text');
     if (h !== 'closed' && now >= mins(h.open) && now < mins(h.close)) {

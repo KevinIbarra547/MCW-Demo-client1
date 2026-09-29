@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<div class="infobar" id="infobar">
+  <span id="infobar-hours" hidden></span>
+  <a data-directions href="#" data-track="directions">📍 <span id="infobar-addr"></span></a>
+  <a data-tel data-tel-label="📞 " href="#" data-track="call"></a>
+</div>
+
 <header class="hero" id="home">
   <img id="hero-img" src="" alt="">
   <div class="wrap nav">
@@ -25,6 +31,8 @@
     <nav class="nav-links" aria-label="Main">
       <a href="#home" aria-current="page">Home</a>
       <a href="#menu">Menu</a>
+      <a href="#order">Order</a>
+      <a href="#catering-section">Catering</a>
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
     </nav>
@@ -44,6 +52,8 @@
   </div>
 </header>
 
+<ul class="amenities wrap" id="amenities" aria-label="What to expect"></ul>
+
 <main>
   <section class="block wrap" id="menu" aria-labelledby="menu-title">
     <div class="head">
@@ -54,12 +64,35 @@
     <p class="menu-note" id="menu-note"></p>
   </section>
 
+  <section class="block wrap" id="order" aria-labelledby="order-title">
+    <h2 id="order-title">Ways to order</h2>
+    <div class="order-grid" id="order-options"></div>
+  </section>
+
   <section class="block wrap" id="reviews" aria-labelledby="reviews-title">
     <div class="head">
       <h2 id="reviews-title">What people say</h2>
       <span class="rating" id="rating"></span>
     </div>
     <div class="reviews" id="review-list"></div>
+  </section>
+
+  <section class="block wrap" id="catering-section" aria-labelledby="catering-title" hidden>
+    <div class="cater">
+      <div class="cater-text">
+        <div class="eyebrow">CATERING &amp; PARTY TRAYS</div>
+        <h2 id="catering-title"></h2>
+        <p id="catering-text"></p>
+        <ul class="trays" id="catering-trays" aria-label="Party trays"></ul>
+        <a class="btn btn-accent" data-tel href="#" data-track="call">Call to order a tray</a>
+      </div>
+      <div class="cater-photo" id="catering-photo" role="img"></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="gallery" aria-labelledby="gallery-title" hidden>
+    <h2 id="gallery-title"></h2>
+    <div class="gallery" id="gallery-grid"></div>
   </section>
 
   <section class="block wrap visit" id="visit" aria-labelledby="visit-title">
@@ -79,7 +112,6 @@
       <h2 id="story-title"></h2>
       <div id="story-text"></div>
       <div class="tags" id="story-tags"></div>
-      <p class="catering" id="catering" hidden></p>
       <a class="btn btn-dark" data-tel data-tel-label="Call us: " href="#" data-track="call"></a>
     </div>
   </section>
@@ -87,17 +119,49 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot">
+    <div class="newsletter" id="newsletter" hidden>
       <div>
-        <a class="logo" href="#home" data-text="business.name"></a>
-        <address class="foot-addr" id="foot-addr"></address>
+        <h2 id="newsletter-title"></h2>
+        <p id="newsletter-text"></p>
+      </div>
+      <a class="btn btn-accent" id="newsletter-btn" href="#" data-track="contact"></a>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="badge" href="#home" aria-label="Back to top"><span>Chào</span><span>XO</span></a>
+        <p id="foot-blurb"></p>
+        <div class="social" id="social" aria-label="Social media"></div>
+      </div>
+      <nav aria-label="Footer">
+        <h3>Explore</h3>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order online</a>
+        <a href="#catering-section">Catering &amp; trays</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#gallery">Photos</a>
+        <a href="#story">Our story</a>
+      </nav>
+      <div>
+        <h3>Hours</h3>
+        <ul class="foot-hours" id="foot-hours"></ul>
       </div>
       <div>
-        <div><a data-tel href="#" data-track="call"></a></div>
-        <div><a data-directions href="#" data-track="directions">Get directions</a></div>
+        <h3>Visit</h3>
+        <address class="foot-addr" id="foot-addr"></address>
+        <a data-directions href="#" data-track="directions">Get directions →</a>
+        <a data-tel href="#" data-track="call"></a>
+        <div id="foot-apps"></div>
       </div>
     </div>
-    <p class="demo-line" id="demo-line" hidden>Demo by Mainstreet Sites SD</p>
+
+    <div class="payments" id="payments" hidden><span>Pay online with</span></div>
+
+    <div class="legal">
+      <span id="copyright"></span>
+      <span id="demo-line" hidden>Demo preview, not the live site</span>
+      <span id="credit"></span>
+    </div>
   </div>
 </footer>
 
