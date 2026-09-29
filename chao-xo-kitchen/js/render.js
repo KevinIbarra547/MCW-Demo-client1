@@ -119,7 +119,7 @@
     var head = el('div', 'item-head');
     head.appendChild(el(tag, null, it.name));
     if (it.price != null) head.appendChild(el('span', 'price', fmtPrice(it.price)));
-    else if (S.demo) head.appendChild(placeholder('[price]'));
+    else if (S.demo && !it.hidePrice) head.appendChild(placeholder('[price]'));
     return head;
   }
   function itemDesc(it) {
