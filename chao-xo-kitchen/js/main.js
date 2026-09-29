@@ -1,5 +1,9 @@
-// Menu tabs
+// Page behavior. Runs after js/render.js has built the page from data/site.js.
 (function () {
+  var S = window.SITE;
+  if (!S) return;
+
+  // Menu tabs (click, or arrow keys when a tab has focus)
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
   function select(tab) {
     tabs.forEach(function (t) {
@@ -17,36 +21,52 @@
       select(next); next.focus();
     });
   });
-})();
 
-// Open-now badge and today's hours, in San Diego time. Sunday hours are unconfirmed, so no badge on Sundays.
-(function () {
-  var hours = { 1: [11, 20], 2: [11, 20], 3: null, 4: [11, 20], 5: [11, 20], 6: [11, 20] };
-  var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
-  var get = function (type) { return parts.filter(function (p) { return p.type === type; })[0].value; };
-  var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
-  var now = (parseInt(get('hour'), 10) % 24) + parseInt(get('minute'), 10) / 60;
-  var row = document.querySelector('#hours li[data-day="' + day + '"]');
-  if (row) { row.classList.add('today'); row.firstElementChild.textContent += ' (today)'; }
-  if (!(day in hours)) return;
-  var status = document.getElementById('status'), text = document.getElementById('status-text');
-  var h = hours[day];
-  if (h && now >= h[0] && now < h[1]) {
-    text.textContent = 'Open now · closes 8 PM';
-  } else {
-    status.classList.add('closed');
-    text.textContent = h && now < h[0] ? 'Closed · opens 11 AM' : 'Closed now';
+  // Open-now badge and today's row, in the restaurant's time zone.
+  // No badge on days whose hours are unknown.
+  (function () {
+    var keys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: S.business.timeZone, weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    var part = function (type) { return parts.filter(function (p) { return p.type === type; })[0].value; };
+    var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(part('weekday'));
+    var now = (parseInt(part('hour'), 10) % 24) * 60 + parseInt(part('minute'), 10);
+    var mins = function (hhmm) { var p = hhmm.split(':'); return +p[0] * 60 + +p[1]; };
+    var label = function (hhmm) {
+      var h = +hhmm.split(':')[0], m = +hhmm.split(':')[1];
+      return (h % 12 || 12) + (m ? ':' + (m < 10 ? '0' : '') + m : '') + (h >= 12 ? ' PM' : ' AM');
+    };
+
+    var row = document.querySelector('#hours li[data-day="' + day + '"]');
+    if (row) { row.classList.add('today'); row.firstElementChild.textContent += ' (today)'; }
+
+    var h = S.hours[keys[day]];
+    if (h == null) return;
+    var status = document.getElementById('status'), text = document.getElementById('status-text');
+    if (h !== 'closed' && now >= mins(h.open) && now < mins(h.close)) {
+      text.textContent = 'Open now · closes ' + label(h.close);
+    } else {
+      status.classList.add('closed');
+      text.textContent = h !== 'closed' && now < mins(h.open) ? 'Closed · opens ' + label(h.open) : 'Closed now';
+    }
+    status.hidden = false;
+  })();
+
+  // Button analytics for the team hub. Nothing is sent until siteKey and hubUrl are set.
+  var a = S.analytics || {};
+  if (a.siteKey && a.hubUrl && navigator.sendBeacon) {
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-track]');
+      if (!el) return;
+      navigator.sendBeacon(a.hubUrl + '/api/events', JSON.stringify({ site_key: a.siteKey, button: el.getAttribute('data-track') }));
+    });
   }
-  status.hidden = false;
-})();
 
-// Button analytics for the team hub. Placeholders stay until launch; nothing is sent while they're unset.
-(function () {
-  var SITE_KEY = '[SITE_KEY]', HUB_URL = '[HUB_URL]';
-  if (SITE_KEY.charAt(0) === '[' || HUB_URL.charAt(0) === '[' || !navigator.sendBeacon) return;
-  document.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-track]');
-    if (!el) return;
-    navigator.sendBeacon(HUB_URL + '/api/events', JSON.stringify({ site_key: SITE_KEY, button: el.getAttribute('data-track') }));
-  });
+  // Cloudflare Web Analytics, only once a token is set.
+  if (a.cfToken) {
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({ token: a.cfToken }));
+    document.body.appendChild(s);
+  }
 })();

@@ -3,64 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- DEMO ONLY: remove the robots meta and the demo footer line at launch -->
+<!-- DEMO ONLY: remove the robots meta at launch (the demo footer line comes from data/site.js) -->
 <meta name="robots" content="noindex">
-<title>Chào XO Kitchen | Asian Fusion in National City</title>
-<meta name="description" content="Chào XO Kitchen serves Asian fusion like birria pho, birria dumplings and ube drinks on E Plaza Blvd in National City, CA.">
+<title>Chào XO Kitchen | Asian Comfort Food in National City</title>
+<meta name="description" content="Chào XO Kitchen serves Asian comfort food like pho, birria dumplings and ube drinks on E Plaza Blvd in National City, CA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Chào XO Kitchen",
-  "servesCuisine": "Asian fusion",
-  "priceRange": "$10–20",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1420 E Plaza Blvd Ste D-05",
-    "addressLocality": "National City",
-    "addressRegion": "CA",
-    "postalCode": "91950",
-    "addressCountry": "US"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday"],
-      "opens": "11:00",
-      "closes": "20:00"
-    }
-  ]
-}
-</script>
 <link rel="stylesheet" href="css/styles.css">
+<!-- Content comes from data/site.js; js/render.js fills the page, js/main.js adds behavior. -->
+<script src="data/site.js" defer></script>
+<script src="js/render.js" defer></script>
+<script src="js/main.js" defer></script>
 </head>
 <body>
 
 <header class="hero" id="home">
-  <img src="images/dining-room.webp" alt="Chào XO Kitchen dining room with wooden booths, hanging plants, woven pendant lights and red bar stools">
+  <img id="hero-img" src="" alt="">
   <div class="wrap nav">
-    <a class="logo" href="#home">Chào XO Kitchen</a>
+    <a class="logo" href="#home" data-text="business.name"></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#home" aria-current="page">Home</a>
       <a href="#menu">Menu</a>
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
     </nav>
-    <a class="btn btn-accent" href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="order">Order Online</a>
+    <a class="btn btn-accent" id="order-btn" href="#menu" data-track="order">Order Online</a>
   </div>
   <div class="wrap">
     <div class="hero-body">
       <span class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></span>
-      <h1>Asian Fusion in National City</h1>
-      <p><strong>Chào XO Kitchen</strong>, serving <strong>birria pho, birria dumplings</strong> and <strong>house drinks</strong> on E Plaza Blvd in <strong>National City</strong>.</p>
+      <h1 data-text="hero.headline"></h1>
+      <p id="hero-sub"></p>
       <div class="hero-ctas">
         <a class="btn btn-accent" href="#menu" data-track="menu">View Our Menu</a>
-        <a class="btn btn-white" href="tel:+16195550123" data-track="call">Call Now</a>
+        <a class="btn btn-white" data-tel href="#" data-track="call">Call Now</a>
       </div>
-      <div class="also"><span>Also on:</span><a href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="order">DoorDash</a></div>
+      <div class="also" id="also" hidden><span>Also on:</span></div>
     </div>
   </div>
 </header>
@@ -69,91 +48,39 @@
   <section class="block wrap" id="menu" aria-labelledby="menu-title">
     <div class="head">
       <h2 id="menu-title">Our menu</h2>
-      <div class="tabs" role="tablist" aria-label="Menu categories">
-        <button class="tab" role="tab" id="tab-food" aria-controls="panel-food" aria-selected="true">Food</button>
-        <button class="tab" role="tab" id="tab-drinks" aria-controls="panel-drinks" aria-selected="false" tabindex="-1">Drinks &amp; dessert</button>
-      </div>
+      <div class="tabs" id="menu-tabs" role="tablist" aria-label="Menu categories"></div>
     </div>
-
-    <div class="grid" role="tabpanel" id="panel-food" aria-labelledby="tab-food">
-      <article class="dish">
-        <img src="images/birria-pho.webp" alt="Bowl of birria pho with shredded beef, rice noodles and green onion in a red broth" loading="lazy">
-        <div><h3>Birria Pho</h3><p>Pho meets birria: shredded beef and rice noodles in a rich red broth.</p></div>
-      </article>
-      <article class="dish">
-        <img src="images/birria-dumplings.webp" alt="Birria dumplings in consommé topped with purple cabbage and onion" loading="lazy">
-        <div><h3>Birria Dumplings</h3><p>Crispy dumplings in consommé, topped with cabbage, onion and chili.</p></div>
-      </article>
-      <article class="dish">
-        <img src="images/lomo-saltado.webp" alt="Beef stir-fry with peppers and onions, fries, white rice and green sauce" loading="lazy">
-        <div><h3>Lomo Saltado</h3><p>Beef stir-fried with peppers and onions, served with fries, rice and green sauce.</p></div>
-      </article>
-    </div>
-
-    <div class="grid" role="tabpanel" id="panel-drinks" aria-labelledby="tab-drinks" hidden>
-      <article class="dish">
-        <img src="images/purple-drinks.webp" alt="Two iced purple drinks in Chào XO cups" loading="lazy">
-        <div><h3>Ube drinks</h3><p>Including their house-made ube coffee.</p></div>
-      </article>
-      <article class="dish">
-        <img src="images/fruit-drinks.webp" alt="Two iced fruit drinks with mango, one with a sugar rim and strawberry" loading="lazy">
-        <div><h3>Fruit drinks</h3><p><span class="placeholder">[Drink names]</span></p></div>
-      </article>
-      <article class="dish">
-        <img src="images/dessert.webp" alt="Dessert in a coupe glass with purple ice cream and an edible flower" loading="lazy">
-        <div><h3>Dessert</h3><p><span class="placeholder">[Dessert name]</span></p></div>
-      </article>
-    </div>
-
-    <p class="menu-note">Also on the menu: Short Rib Pho, Kare Curry, Tomyum Pasta, Pandan Horchata and more. <a href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="menu">See the full menu →</a></p>
+    <div id="menu-panels"></div>
+    <p class="menu-note" id="menu-note"></p>
   </section>
 
   <section class="block wrap" id="reviews" aria-labelledby="reviews-title">
     <div class="head">
       <h2 id="reviews-title">What people say</h2>
-      <span class="rating">Google <span aria-hidden="true">★</span> 4.6 · 412 reviews</span>
+      <span class="rating" id="rating"></span>
     </div>
-    <div class="reviews">
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“First time here. The food was amazing. The service was really good too and fast! I was surprised. … Birria dumplings were perfect and spicy!! The dessert was out of this world. Definitely coming again”</blockquote>
-        <figcaption>Mireya M. <span>· Google review</span></figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“Really good pho broth. And the drinks!!! Loved the drinks. Both appetizers were also tasty. Quick service. … Definitely a solid spot I want to try the other noodle dishes!”</blockquote>
-        <figcaption>Kristina B. <span>· Google review</span></figcaption>
-      </figure>
-    </div>
+    <div class="reviews" id="review-list"></div>
   </section>
 
   <section class="block wrap visit" id="visit" aria-labelledby="visit-title">
     <div class="card">
       <h2 id="visit-title">Hours</h2>
-      <ul class="hours" id="hours">
-        <li data-day="1"><span>Monday</span><span>11 AM – 8 PM</span></li>
-        <li data-day="2"><span>Tuesday</span><span>11 AM – 8 PM</span></li>
-        <li data-day="3"><span>Wednesday</span><span>Closed</span></li>
-        <li data-day="4"><span>Thursday</span><span>11 AM – 8 PM</span></li>
-        <li data-day="5"><span>Friday</span><span>11 AM – 8 PM</span></li>
-        <li data-day="6"><span>Saturday</span><span>11 AM – 8 PM</span></li>
-        <li data-day="0"><span>Sunday</span><span class="placeholder">[hours]</span></li>
-      </ul>
-      <address class="addr">1420 E Plaza Blvd Ste D-05<br>National City, CA 91950</address>
-      <a class="link" href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Get directions →</a>
+      <ul class="hours" id="hours"></ul>
+      <address class="addr" id="addr"></address>
+      <a class="link" data-directions href="#" data-track="directions">Get directions →</a>
     </div>
-    <iframe class="map" title="Map to Chào XO Kitchen, 1420 E Plaza Blvd, National City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950&output=embed"></iframe>
+    <iframe class="map" id="map" title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 
   <section class="block wrap story" id="story" aria-labelledby="story-title">
-    <div class="story-photo">
-      <img src="images/fruit-drinks.webp" alt="Two fruit drinks on a marble table in the dining room" loading="lazy">
-    </div>
+    <div class="story-photo"><img id="story-img" src="" alt="" loading="lazy"></div>
     <div>
       <div class="eyebrow">OUR STORY</div>
-      <h2 id="story-title"><span class="placeholder">[Owner or family name]</span></h2>
-      <p><span class="placeholder">[Their story in their own words: where the recipes come from and why they opened in National City.]</span></p>
-      <a class="btn btn-dark" href="tel:+16195550123" data-track="call">Call us: (619) 555-0123</a>
+      <h2 id="story-title"></h2>
+      <div id="story-text"></div>
+      <div class="tags" id="story-tags"></div>
+      <p class="catering" id="catering" hidden></p>
+      <a class="btn btn-dark" data-tel data-tel-label="Call us: " href="#" data-track="call"></a>
     </div>
   </section>
 </main>
@@ -162,25 +89,23 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="#home">Chào XO Kitchen</a>
-        <address class="foot-addr">1420 E Plaza Blvd Ste D-05, National City, CA 91950</address>
+        <a class="logo" href="#home" data-text="business.name"></a>
+        <address class="foot-addr" id="foot-addr"></address>
       </div>
       <div>
-        <div><a href="tel:+16195550123" data-track="call">(619) 555-0123</a></div>
-        <div><a href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Get directions</a></div>
+        <div><a data-tel href="#" data-track="call"></a></div>
+        <div><a data-directions href="#" data-track="directions">Get directions</a></div>
       </div>
     </div>
-    <p class="demo-line">Demo by Mainstreet Sites SD</p>
+    <p class="demo-line" id="demo-line" hidden>Demo by Mainstreet Sites SD</p>
   </div>
 </footer>
 
 <div class="callbar">
-  <a class="btn btn-accent" href="tel:+16195550123" data-track="call">Call Now</a>
-  <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Directions</a>
+  <a class="btn btn-accent" data-tel href="#" data-track="call">Call Now</a>
+  <a class="btn btn-dark" data-directions href="#" data-track="directions">Directions</a>
 </div>
 
-<script src="js/main.js" defer></script>
-<!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CF_TOKEN]"}'></script>
+<noscript><p class="wrap">This site needs JavaScript to show the menu and hours. Call us or visit 1420 E Plaza Blvd Ste D-05, National City.</p></noscript>
 </body>
 </html>
