@@ -47,6 +47,18 @@
   });
   $$('[data-directions]').forEach(function (a) { a.href = directionsUrl; });
 
+  // Top info bar (today's hours are filled in by main.js) and features strip
+  $('#infobar-addr').textContent = b.address.street.replace(/ Ste .*/, '') + ', ' + b.address.city;
+  var am = $('#amenities');
+  (S.amenities || []).forEach(function (a) {
+    var li = el('li');
+    var icon = el('span', null, a.icon); icon.setAttribute('aria-hidden', 'true');
+    li.appendChild(icon);
+    li.appendChild(document.createTextNode(' ' + a.label));
+    am.appendChild(li);
+  });
+  am.hidden = !am.children.length;
+
   // Hero
   var heroImg = $('#hero-img');
   heroImg.src = S.hero.image;

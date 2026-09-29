@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<div class="infobar" id="infobar">
+  <span id="infobar-hours" hidden></span>
+  <a data-directions href="#" data-track="directions">📍 <span id="infobar-addr"></span></a>
+  <a data-tel data-tel-label="📞 " href="#" data-track="call"></a>
+</div>
+
 <header class="hero" id="home">
   <img id="hero-img" src="" alt="">
   <div class="wrap nav">
@@ -43,6 +49,8 @@
     </div>
   </div>
 </header>
+
+<ul class="amenities wrap" id="amenities" aria-label="What to expect"></ul>
 
 <main>
   <section class="block wrap" id="menu" aria-labelledby="menu-title">
