@@ -2,7 +2,7 @@
 
 - **Mode:** Demo
 - **Business type / template:** Restaurant / `restaurant.html`
-- **Language:** English (default; Kevin didn't pick, Spanish can be added)
+- **Language:** English (Kevin confirmed 2026-09-29; Spanish can be added later)
 - **Status:** Draft, 2026-09-29
 
 ## Facts (each with its source)
@@ -38,10 +38,10 @@
 ## Photos
 | Slot | Source | Permission from / date | File |
 | --- | --- | --- | --- |
-| Hero | Their Google listing photos (sent by Kevin) | **Not yet** — ask owner at pitch; swap for stock if no | `images/birria-dumplings.webp` |
+| Hero | Google Maps photo of the dining room (sent by Kevin, cropped to remove Maps buttons/caption; marked "may be subject to copyright") | **Not yet** — ask owner at pitch; swap for stock if no | `images/dining-room.webp` |
 | Menu: Birria Pho | Google listing photo | Not yet | `images/birria-pho.webp` |
 | Menu: Birria Dumplings | Google listing photo | Not yet | `images/birria-dumplings.webp` |
-| Menu: Lomo Saltado | Google listing photo (dish name is our best match, confirm) | Not yet | `images/lomo-saltado.webp` |
+| Menu: Lomo Saltado | Google listing photo (dish name confirmed by Kevin) | Not yet | `images/lomo-saltado.webp` |
 | Menu: Ube drinks | Google listing photo | Not yet | `images/purple-drinks.webp` |
 | Menu: Fruit drinks | Google listing photo | Not yet | `images/fruit-drinks.webp` |
 | Menu: Dessert | Google listing photo | Not yet | `images/dessert.webp` |
@@ -56,6 +56,14 @@ Kevin chose to use Google photos for this private pitch demo (2026-09-29). The p
 | Mireya M. (5★, ~6 months ago) | Google review, screenshot from Kevin | Yes, trimmed with "…" |
 | Kristina B. (5★, ~7 months ago) | Google review, screenshot from Kevin | Yes, trimmed with "…" |
 
+## Files
+- `index.html`: page content (plus the LocalBusiness JSON-LD)
+- `css/styles.css`: all styles; brand colors and fonts are the `:root` variables at the top
+- `js/main.js`: menu tabs, Open-now badge and today's hours, button tracking
+- `images/`: photos (see Photos above)
+
+Split into separate files at Kevin's request (2026-09-29).
+
 ## Forms
 - None. Call and Directions buttons only.
 
@@ -63,7 +71,6 @@ Kevin chose to use Google photos for this private pitch demo (2026-09-29). The p
 - [ ] Real phone number (replace every `+16195550123` / `(619) 555-0123`)
 - [ ] Sunday hours
 - [ ] Owner's OK to use their Google photos (or replace them)
-- [ ] Confirm the beef plate is Lomo Saltado
 - [ ] Names of the fruit drinks and the dessert
 - [ ] Menu prices, or a link to their full menu on their own site
 - [ ] Owner/family name, story and photo for Our Story
