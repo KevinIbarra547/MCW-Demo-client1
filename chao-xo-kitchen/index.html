@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- DEMO ONLY: remove the robots meta and the demo footer line at launch -->
+<meta name="robots" content="noindex">
+<title>Chào XO Kitchen | Asian Fusion in National City</title>
+<meta name="description" content="Chào XO Kitchen serves Asian fusion like birria pho, birria dumplings and ube drinks on E Plaza Blvd in National City, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Chào XO Kitchen",
+  "servesCuisine": "Asian fusion",
+  "priceRange": "$10–20",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1420 E Plaza Blvd Ste D-05",
+    "addressLocality": "National City",
+    "addressRegion": "CA",
+    "postalCode": "91950",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday", "Saturday"],
+      "opens": "11:00",
+      "closes": "20:00"
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --accent: #C4441C;
+    --accent-contrast: #FFFFFF;
+    --ink: #2A1810;
+    --muted: #6E5646;
+    --bg: #FFF7EC;
+    --card: #FFFFFF;
+    --line: #EAD9C2;
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-body: 'Instrument Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--ink); line-height: 1.5; }
+  img { display: block; max-width: 100%; }
+  a { color: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; margin: 0; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 17px; text-decoration: none; border: 0; cursor: pointer; }
+  .btn-accent { background: var(--accent); color: var(--accent-contrast); }
+  .btn-accent:hover { background: #A8391A; color: var(--accent-contrast); }
+  .btn-white { background: #FFFFFF; color: var(--ink); }
+  .btn-dark { background: var(--ink); color: var(--bg); }
+
+  /* Hero */
+  .hero { position: relative; min-height: 88vh; color: #FFFFFF; display: flex; flex-direction: column; overflow: hidden; }
+  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; z-index: 0; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,6,0.72) 0%, rgba(20,10,6,0.62) 45%, rgba(20,10,6,0.9) 100%); z-index: 0; }
+  .hero > .wrap { position: relative; z-index: 1; width: 100%; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
+  .logo { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: #FFFFFF; text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; font-weight: 600; }
+  .nav-links a { color: #FFFFFF; text-decoration: none; padding: 10px 0; }
+  .nav-links a[aria-current] { border-bottom: 3px solid var(--accent); }
+  .hero-body { margin-top: auto; padding: 40px 0 64px; max-width: 900px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 7px 14px; font-size: 15px; font-weight: 600; }
+  .status[hidden] { display: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; }
+  .status.closed .dot { background: #F87171; }
+  .hero h1 { margin-top: 18px; font-size: clamp(44px, 9vw, 92px); line-height: 0.98; letter-spacing: -0.03em; }
+  .hero p { margin: 20px 0 0; font-size: clamp(18px, 2.2vw, 22px); line-height: 1.45; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .also { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; font-size: 15px; font-weight: 600; }
+  .also a { color: #FFFFFF; border: 1px solid rgba(255,255,255,0.45); border-radius: 8px; padding: 10px 14px; text-decoration: none; }
+
+  /* Sections */
+  section.block { padding: 72px 0 0; }
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+  .head h2 { font-size: clamp(34px, 5vw, 46px); }
+
+  /* Menu */
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tab { min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 700 16px var(--font-body); cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+  .dish { background: var(--card); border-radius: 20px; overflow: hidden; }
+  .dish img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .dish div { padding: 16px 18px 20px; }
+  .dish h3 { font-family: var(--font-body); font-weight: 700; font-size: 19px; }
+  .dish p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+  .menu-note { margin-top: 20px; color: var(--muted); }
+  .menu-note a { font-weight: 700; color: var(--accent); }
+
+  /* Reviews */
+  .rating { font-weight: 700; }
+  .rating span { color: var(--accent); }
+  .reviews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+  .review { background: var(--card); border-radius: 20px; padding: 24px; margin: 0; }
+  .review .stars { color: var(--accent); font-size: 18px; }
+  .review blockquote { margin: 10px 0 0; font-size: 17px; line-height: 1.6; }
+  .review figcaption { margin-top: 14px; font-weight: 700; }
+  .review figcaption span { font-weight: 500; color: var(--muted); }
+
+  /* Visit */
+  .visit { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; }
+  .card { background: var(--card); border-radius: 20px; padding: 28px; }
+  .card h2 { font-size: 34px; }
+  .hours { list-style: none; padding: 0; margin: 14px 0 0; font-size: 17px; }
+  .hours li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; }
+  .hours li.today { font-weight: 700; color: var(--accent); }
+  .addr { margin-top: 20px; font-weight: 700; font-style: normal; }
+  .link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--accent); }
+  .map { border: 0; width: 100%; height: 100%; min-height: 320px; border-radius: 20px; background: var(--line); }
+
+  /* Story */
+  .story { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+  .story-photo { border-radius: 24px; overflow: hidden; }
+  .story-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0.12em; font-size: 14px; }
+  .story h2 { margin-top: 8px; font-size: clamp(34px, 5vw, 46px); line-height: 1.05; }
+  .story p { margin: 16px 0 22px; font-size: 19px; line-height: 1.65; color: #5C4636; }
+  .placeholder { background: #FFF1D6; border: 1px dashed #C9A36B; border-radius: 8px; padding: 2px 6px; }
+
+  /* Footer */
+  footer { margin-top: 80px; background: var(--ink); color: var(--bg); padding: 48px 0 110px; }
+  footer a { color: var(--bg); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+  .foot .logo { font-size: 24px; }
+  .demo-line { margin-top: 28px; font-size: 14px; opacity: 0.7; }
+
+  /* Sticky call bar: phones only */
+  .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: none; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--bg); border-top: 1px solid var(--line); }
+  .callbar .btn { flex: 1; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .visit, .story { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav .btn { padding: 10px 16px; font-size: 15px; white-space: nowrap; }
+    .logo { font-size: 22px; }
+    .grid, .reviews { grid-template-columns: 1fr; }
+    .hero { min-height: 92vh; }
+    .hero-ctas .btn { flex: 1 1 100%; }
+    .callbar { display: flex; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+  <img src="images/birria-dumplings.webp" alt="Birria dumplings in red consommé topped with purple cabbage, onion and green onion">
+  <div class="wrap nav">
+    <a class="logo" href="#home">Chào XO Kitchen</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#home" aria-current="page">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-accent" href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="order">Order Online</a>
+  </div>
+  <div class="wrap">
+    <div class="hero-body">
+      <span class="status" id="status" hidden><span class="dot"></span><span id="status-text"></span></span>
+      <h1>Asian Fusion in National City</h1>
+      <p><strong>Chào XO Kitchen</strong>, serving <strong>birria pho, birria dumplings</strong> and <strong>house drinks</strong> on E Plaza Blvd in <strong>National City</strong>.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="#menu" data-track="menu">View Our Menu</a>
+        <a class="btn btn-white" href="tel:+16195550123" data-track="call">Call Now</a>
+      </div>
+      <div class="also"><span>Also on:</span><a href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="order">DoorDash</a></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block wrap" id="menu" aria-labelledby="menu-title">
+    <div class="head">
+      <h2 id="menu-title">Our menu</h2>
+      <div class="tabs" role="tablist" aria-label="Menu categories">
+        <button class="tab" role="tab" id="tab-food" aria-controls="panel-food" aria-selected="true">Food</button>
+        <button class="tab" role="tab" id="tab-drinks" aria-controls="panel-drinks" aria-selected="false" tabindex="-1">Drinks &amp; dessert</button>
+      </div>
+    </div>
+
+    <div class="grid" role="tabpanel" id="panel-food" aria-labelledby="tab-food">
+      <article class="dish">
+        <img src="images/birria-pho.webp" alt="Bowl of birria pho with shredded beef, rice noodles and green onion in a red broth" loading="lazy">
+        <div><h3>Birria Pho</h3><p>Pho meets birria: shredded beef and rice noodles in a rich red broth.</p></div>
+      </article>
+      <article class="dish">
+        <img src="images/birria-dumplings.webp" alt="Birria dumplings in consommé topped with purple cabbage and onion" loading="lazy">
+        <div><h3>Birria Dumplings</h3><p>Crispy dumplings in consommé, topped with cabbage, onion and chili.</p></div>
+      </article>
+      <article class="dish">
+        <img src="images/lomo-saltado.webp" alt="Beef stir-fry with peppers and onions, fries, white rice and green sauce" loading="lazy">
+        <div><h3>Lomo Saltado</h3><p>Beef stir-fried with peppers and onions, served with fries, rice and green sauce.</p></div>
+      </article>
+    </div>
+
+    <div class="grid" role="tabpanel" id="panel-drinks" aria-labelledby="tab-drinks" hidden>
+      <article class="dish">
+        <img src="images/purple-drinks.webp" alt="Two iced purple drinks in Chào XO cups" loading="lazy">
+        <div><h3>Ube drinks</h3><p>Including their house-made ube coffee.</p></div>
+      </article>
+      <article class="dish">
+        <img src="images/fruit-drinks.webp" alt="Two iced fruit drinks with mango, one with a sugar rim and strawberry" loading="lazy">
+        <div><h3>Fruit drinks</h3><p><span class="placeholder">[Drink names]</span></p></div>
+      </article>
+      <article class="dish">
+        <img src="images/dessert.webp" alt="Dessert in a coupe glass with purple ice cream and an edible flower" loading="lazy">
+        <div><h3>Dessert</h3><p><span class="placeholder">[Dessert name]</span></p></div>
+      </article>
+    </div>
+
+    <p class="menu-note">Also on the menu: Short Rib Pho, Kare Curry, Tomyum Pasta, Pandan Horchata and more. <a href="https://www.doordash.com/store/chao-xo-national-city-27736345/" data-track="menu">See the full menu →</a></p>
+  </section>
+
+  <section class="block wrap" id="reviews" aria-labelledby="reviews-title">
+    <div class="head">
+      <h2 id="reviews-title">What people say</h2>
+      <span class="rating">Google <span aria-hidden="true">★</span> 4.6 · 412 reviews</span>
+    </div>
+    <div class="reviews">
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“First time here. The food was amazing. The service was really good too and fast! I was surprised. … Birria dumplings were perfect and spicy!! The dessert was out of this world. Definitely coming again”</blockquote>
+        <figcaption>Mireya M. <span>· Google review</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Really good pho broth. And the drinks!!! Loved the drinks. Both appetizers were also tasty. Quick service. … Definitely a solid spot I want to try the other noodle dishes!”</blockquote>
+        <figcaption>Kristina B. <span>· Google review</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block wrap visit" id="visit" aria-labelledby="visit-title">
+    <div class="card">
+      <h2 id="visit-title">Hours</h2>
+      <ul class="hours" id="hours">
+        <li data-day="1"><span>Monday</span><span>11 AM – 8 PM</span></li>
+        <li data-day="2"><span>Tuesday</span><span>11 AM – 8 PM</span></li>
+        <li data-day="3"><span>Wednesday</span><span>Closed</span></li>
+        <li data-day="4"><span>Thursday</span><span>11 AM – 8 PM</span></li>
+        <li data-day="5"><span>Friday</span><span>11 AM – 8 PM</span></li>
+        <li data-day="6"><span>Saturday</span><span>11 AM – 8 PM</span></li>
+        <li data-day="0"><span>Sunday</span><span class="placeholder">[hours]</span></li>
+      </ul>
+      <address class="addr">1420 E Plaza Blvd Ste D-05<br>National City, CA 91950</address>
+      <a class="link" href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Get directions →</a>
+    </div>
+    <iframe class="map" title="Map to Chào XO Kitchen, 1420 E Plaza Blvd, National City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950&output=embed"></iframe>
+  </section>
+
+  <section class="block wrap story" id="story" aria-labelledby="story-title">
+    <div class="story-photo">
+      <img src="images/fruit-drinks.webp" alt="Two fruit drinks on a marble table in the dining room" loading="lazy">
+    </div>
+    <div>
+      <div class="eyebrow">OUR STORY</div>
+      <h2 id="story-title"><span class="placeholder">[Owner or family name]</span></h2>
+      <p><span class="placeholder">[Their story in their own words: where the recipes come from and why they opened in National City.]</span></p>
+      <a class="btn btn-dark" href="tel:+16195550123" data-track="call">Call us: (619) 555-0123</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#home">Chào XO Kitchen</a>
+        <address style="font-style: normal; margin-top: 8px">1420 E Plaza Blvd Ste D-05, National City, CA 91950</address>
+      </div>
+      <div>
+        <div><a href="tel:+16195550123" data-track="call">(619) 555-0123</a></div>
+        <div><a href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Get directions</a></div>
+      </div>
+    </div>
+    <p class="demo-line">Demo by Mainstreet Sites SD</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-accent" href="tel:+16195550123" data-track="call">Call Now</a>
+  <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=1420+E+Plaza+Blvd+Ste+D-05+National+City+CA+91950" data-track="directions">Directions</a>
+</div>
+
+<script>
+  // Menu tabs
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        var next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        select(next); next.focus();
+      });
+    });
+  })();
+
+  // Open-now badge and today's hours, in San Diego time. Sunday hours are unconfirmed, so no badge on Sundays.
+  (function () {
+    var hours = { 1: [11, 20], 2: [11, 20], 3: null, 4: [11, 20], 5: [11, 20], 6: [11, 20] };
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    var get = function (type) { return parts.filter(function (p) { return p.type === type; })[0].value; };
+    var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+    var now = (parseInt(get('hour'), 10) % 24) + parseInt(get('minute'), 10) / 60;
+    var row = document.querySelector('#hours li[data-day="' + day + '"]');
+    if (row) { row.classList.add('today'); row.firstElementChild.textContent += ' (today)'; }
+    if (!(day in hours)) return;
+    var status = document.getElementById('status'), text = document.getElementById('status-text');
+    var h = hours[day];
+    if (h && now >= h[0] && now < h[1]) {
+      text.textContent = 'Open now · closes 8 PM';
+    } else {
+      status.classList.add('closed');
+      text.textContent = h && now < h[0] ? 'Closed · opens 11 AM' : 'Closed now';
+    }
+    status.hidden = false;
+  })();
+
+  // Button analytics for the team hub. Placeholders stay until launch; nothing is sent while they're unset.
+  (function () {
+    var SITE_KEY = '[SITE_KEY]', HUB_URL = '[HUB_URL]';
+    if (SITE_KEY.charAt(0) === '[' || HUB_URL.charAt(0) === '[' || !navigator.sendBeacon) return;
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-track]');
+      if (!el) return;
+      navigator.sendBeacon(HUB_URL + '/api/events', JSON.stringify({ site_key: SITE_KEY, button: el.getAttribute('data-track') }));
+    });
+  })();
+</script>
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "[CF_TOKEN]"}'></script>
+</body>
+</html>
