@@ -47,9 +47,10 @@ chaoxo.com's hours, phone and address blocks are Square template filler ((555) 5
 | Hero | Google Maps photo of the dining room (sent by Kevin, cropped to remove Maps buttons/caption; marked "may be subject to copyright") | **Not yet** — ask owner at pitch; swap for stock if no | `images/dining-room.webp` |
 | Menu: Birria Pho | Google listing photo | Not yet | `images/birria-pho.webp` |
 | Menu: Birria Dumplings | Google listing photo | Not yet | `images/birria-dumplings.webp` |
-| Menu: Lomo Saltado | Google listing photo (dish name confirmed by Kevin; **not on their online menu**, closest is the "'Saltado' Shaken" party tray, so no price shown) | Not yet | `images/lomo-saltado.webp` |
+| Menu: Lomo Saltado | Google listing photo (Kevin chose to keep this name 2026-09-29; not on their online menu, so the price slot is hidden) | Not yet | `images/lomo-saltado.webp` |
 | Menu: Ube Coffee | Google listing photo (matched to their menu item) | Not yet | `images/purple-drinks.webp` |
-| Menu: Fruit drinks | Google listing photo | Not yet | `images/fruit-drinks.webp` |
+| Menu: Mango Fruit Drinks | Google listing photo. No exact match on their menu (compared with Mango Calamansi and Pineapple Tamarindo photos), so Kevin OK'd a descriptive name; price hidden | Not yet | `images/fruit-drinks.webp` |
+| Menu: 17 more dish/drink photos | Their own product photos from chaoxo.com online ordering, downloaded 2026-09-29 with Kevin's OK. Skipped Anthony Bourdain Pho (has a "Hypic" app watermark) | Kevin OK'd for the demo; confirm with owner | `images/menu/*.webp` |
 | Menu: Pandan Halo | Google listing photo (matches their description: jellies, pandan, ube ice cream) | Not yet | `images/dessert.webp` |
 | Our Story | Reuses fruit-drinks photo as a stand-in | Not yet | `images/fruit-drinks.webp` |
 | Owner | none yet | | |
@@ -79,8 +80,7 @@ The data file is `.js`, not `.json`, so the site still works when opened straigh
 - [ ] Real phone number (replace every `+16195550123` / `(619) 555-0123`)
 - [ ] Sunday hours
 - [ ] Owner's OK to use their Google photos (or replace them)
-- [ ] Names of the two fruit drinks in the photo
-- [ ] Lomo Saltado: is it a regular menu item (and price), or rename the card to their "'Saltado' Shaken"?
+- [ ] Lomo Saltado and Mango Fruit Drinks: ask the owner for real names/prices
 - [ ] Owner confirms menu prices are current (pulled 2026-09-29)
 - [ ] Owner's photo for Our Story (text now comes from their About us)
 - [ ] Instagram handle (turns on the Instagram grid)
