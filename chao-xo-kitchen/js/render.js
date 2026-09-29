@@ -226,6 +226,18 @@
   });
   var tags = $('#story-tags');
   (S.story.tags || []).forEach(function (t) { tags.appendChild(el('span', 'tag', t)); });
+  // Gallery
+  if (S.gallery && S.gallery.photos && S.gallery.photos.length) {
+    $('#gallery-title').textContent = S.gallery.title || 'Photos';
+    var gal = $('#gallery-grid');
+    S.gallery.photos.forEach(function (ph) {
+      var img = el('img');
+      img.src = ph.image; img.alt = ph.alt || ''; img.loading = 'lazy';
+      gal.appendChild(img);
+    });
+    $('#gallery').hidden = false;
+  }
+
   // Catering
   if (S.catering && S.catering.text) {
     $('#catering-title').textContent = S.catering.headline || 'Catering';
